@@ -37,7 +37,7 @@ class Card():
     value: Value
     
     def __str__(self):
-        return f"{YELLOW}{self.value.name} OF {self.suit.name}{END_COLOR}"
+        return f"{YELLOW}{self.value.name} OF {self.suit.name} {self.value.value , self.suit.value}{END_COLOR}"
 
 class Deck():
     def __init__(self) -> None:

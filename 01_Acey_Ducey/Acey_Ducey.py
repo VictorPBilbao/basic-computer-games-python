@@ -82,7 +82,8 @@ class Game():
     def check_bet(self, bet: int) -> None:
         random_card = self.select_random_card()
         print(f"The random card is: {random_card}")
-        cards_in_between = range(self.discard[-1].value.value, random_card.value.value + 1)
+        cards_in_between = self.cards_range(
+            self.discard[-1].value.value, random_card.value.value + 1)
         if random_card.value.value not in cards_in_between:
             self.money -= bet + self.round * 2
             print(f"you lost ${bet + self.round * 2}")
@@ -90,6 +91,10 @@ class Game():
             print(f"you won ${bet // len(cards_in_between)}")
             self.money += bet // len(cards_in_between)
         input("Press Enter to continue...")
+    
+    def cards_range(self, start: int, end: int) -> list:
+        rn = sorted([start, end])
+        return range(rn[0], rn[1] + 1)
     
 def main():
     game = Game()
